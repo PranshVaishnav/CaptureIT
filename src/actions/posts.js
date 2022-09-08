@@ -1,7 +1,7 @@
 import * as api from '../api'
 
 //Action Creators
-
+// In action we define what function should invoke which dispatch and where the reducers should work and send new state
 export const getPosts = () => async (dispatch) => {
     try {
         const { data } = await api.fetchPosts();

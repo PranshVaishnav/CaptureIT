@@ -1,3 +1,7 @@
+
+//This is where the actual change happpens. 
+// Acording to the action happened the reducers update the global state
+
 export default (posts = [], action) => {
     switch (action.type) {
         
