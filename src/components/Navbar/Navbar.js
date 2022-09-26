@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory , useLocation } from 'react-router-dom';
 import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core'
 
 import useStyles from './styles.js'
@@ -10,7 +10,7 @@ function Navbar() {
     const classes = useStyles();
     const history = useHistory();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-
+    const location=useLocation();
     const dispatch = useDispatch();
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
@@ -18,12 +18,12 @@ function Navbar() {
         setUser(null);
     }
 
-    // useEffect(() => {
-    //     const token = user?.decoded.jti;
+    useEffect(() => {
+        const token = user?.decoded.jti;
 
-    //     //JWT
-    //     setUser(JSON.parse(localStorage.getItem('profile')));
-    // }, []);
+        //JWT
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [location]);
 
 
     return (
